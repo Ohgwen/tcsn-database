@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>TCSN Roster</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">TCSN <span>Roster</span></a>
+    <div class="spacer"></div>
+    <a class="btn btn-ghost" href="/import">Import</a>
+    <button class="btn-ghost" id="logout" type="button">Log out</button>
+  </header>
+
+  <main>
+    <div class="toolbar card">
+      <div class="row">
+        <input id="search" type="search" placeholder="Search by name…" autocomplete="off" style="flex:1 1 220px" aria-label="Search by name">
+        <a class="btn btn-primary" href="/edit">+ Add New Person</a>
+      </div>
+      <div class="filters">
+        <select id="f-track" aria-label="Track"><option value="">All tracks</option></select>
+        <select id="f-year" aria-label="Year"><option value="">All years</option></select>
+        <select id="f-status" aria-label="Status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="">Any status</option>
+        </select>
+        <select id="f-car" aria-label="Has car">
+          <option value="">Car: any</option>
+          <option value="yes">Has car</option>
+          <option value="no">No car</option>
+        </select>
+        <select id="f-interviewed" aria-label="Interviewed">
+          <option value="">Interviewed: any</option>
+          <option value="yes">Interviewed</option>
+          <option value="no">Not interviewed</option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="result-count" id="count">Loading…</span>
+        <button class="btn-small btn-ghost" id="clear" type="button">Clear filters</button>
+      </div>
+    </div>
+
+    <table class="roster">
+      <thead>
+        <tr>
+          <th data-sort="name">Name</th>
+          <th data-sort="track">Track</th>
+          <th data-sort="year">Year</th>
+          <th data-sort="has_car">Has Car</th>
+          <th data-sort="status_active">Status</th>
+          <th data-sort="immediate_read">Immediate Read</th>
+          <th data-sort="note_count" class="notes-col">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </main>
+
+  <script type="module" src="/js/roster.js"></script>
+</body>
+</html>

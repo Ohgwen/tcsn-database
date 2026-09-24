@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sign in · TCSN Roster</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="card login-card" id="login">
+      <h1 style="margin-bottom:4px">TCSN <span style="color:var(--orange)">Roster</span></h1>
+      <p class="muted small" style="margin-top:0">Tennessee Club Sports Network · members only</p>
+      <label for="password">Club password</label>
+      <input type="password" id="password" autocomplete="current-password" required autofocus>
+      <p class="error-box hidden" id="err" style="margin:10px 0 0"></p>
+      <button class="btn-primary" type="submit" style="width:100%;margin-top:12px">Sign in</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('login').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('err');
+      err.classList.add('hidden');
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: document.getElementById('password').value }),
+      }).catch(() => null);
+      if (res && res.ok) {
+        const next = new URLSearchParams(location.search).get('next') || '/';
+        location.href = next.startsWith('/') && !next.startsWith('//') ? next : '/';
+      } else {
+        err.textContent = res && res.status === 401 ? 'Wrong password.' : 'Could not reach the server.';
+        err.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

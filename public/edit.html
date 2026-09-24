@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Edit Person · TCSN Roster</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">← TCSN <span>Roster</span></a>
+  </header>
+
+  <main>
+    <form id="person-form" class="card" novalidate>
+      <h1 id="form-title" style="margin-bottom:8px">Add New Person</h1>
+      <div id="form-error" class="error-box hidden"></div>
+      <div id="groups"></div>
+      <div class="form-actions" style="margin-top:20px">
+        <button class="btn-primary" type="submit" id="save">Save</button>
+        <a class="btn" id="cancel" href="/">Cancel</a>
+        <span class="spacer"></span>
+        <button class="btn-danger hidden" type="button" id="delete">Delete person</button>
+      </div>
+      <p class="small muted hidden" id="delete-hint">Deleting also removes all of this person's notes. To keep history, set Status to Inactive instead.</p>
+    </form>
+  </main>
+
+  <script type="module" src="/js/edit.js"></script>
+</body>
+</html>

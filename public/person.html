@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Profile · TCSN Roster</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">← TCSN <span>Roster</span></a>
+    <div class="spacer"></div>
+    <a class="btn btn-ghost" id="edit-link" href="#">Edit</a>
+  </header>
+
+  <main id="main">
+    <section class="card profile-head">
+      <h1 id="p-name">Loading…</h1>
+      <div class="row" id="p-badges"></div>
+      <div class="contact" id="p-contact"></div>
+    </section>
+
+    <section class="card">
+      <details class="fields" id="fields" open>
+        <summary>Details</summary>
+        <div id="p-fields"></div>
+        <p class="small muted" id="p-stamps"></p>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-bottom:12px">Notes <span class="muted small" id="note-count"></span></h2>
+
+      <form class="note-form" id="note-form" autocomplete="off">
+        <div class="cat-chips" id="cat-chips" role="radiogroup" aria-label="Category"></div>
+        <textarea id="note-text" placeholder="What happened? (Ctrl/⌘+Enter to add)" required aria-label="Note"></textarea>
+        <div class="row">
+          <div><label for="note-date">Date (what it's about)</label><input id="note-date" type="date"></div>
+          <div><label for="note-author">Your name (optional)</label><input id="note-author" type="text" maxlength="100"></div>
+        </div>
+        <div><button class="btn-primary" type="submit" id="note-submit" style="width:100%">Add Note</button></div>
+      </form>
+
+      <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+
+      <div class="cat-chips" id="filter-chips" style="margin-bottom:12px" aria-label="Filter notes"></div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+  </main>
+
+  <script type="module" src="/js/person.js"></script>
+</body>
+</html>
